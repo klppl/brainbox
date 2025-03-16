@@ -1,0 +1,105 @@
+matches:
+  - trigger: ":dance"
+    replace: "`ᕕ(⌐■_■)ᕗ ♪♬`"
+
+  - trigger: ":flip"
+    replace: "`(╯°□°）╯︵ ┻━┻`"
+
+  - trigger: ":nice"
+    replace: "𝓷𝓲𝓬𝓮 ☜(ﾟヮﾟ☜)"
+
+  - trigger: ":dwi"
+    replace: "(⌐■_■)"
+
+  - trigger: ":hg"
+    replace: "ᕕ( ᐛ )ᕗ"
+
+  - trigger: ":eh"
+    replace: "‽"
+
+  - trigger: ":loading"
+    replace: "███▒▒▒▒▒▒▒"
+
+  - trigger: ":lol"
+    replace: "L(° O °L)"
+
+  - trigger: ":nerd"
+    replace: "(⌐⊙_⊙)"
+
+  - trigger: ":nuke"
+    replace: "☢"
+
+  - trigger: ":smile"
+    replace: "ツ"
+
+  - trigger: ":smirk"
+    replace: "¬‿¬"
+
+  - trigger: ":this"
+    replace: "( ͡° ͜ʖ ͡°)_/¯"
+
+  - trigger: ":derp"
+    replace: "☉ ‿ ⚆"
+
+  - trigger: ":cloud"
+    replace: "☁"
+
+  - trigger: ":boombox"
+    replace: "''♫♪.ılılıll|̲̅̅●̲̅̅|̲̅̅=̲̅̅|̲̅̅●̲̅̅|llılılı.♫♪''"
+
+  - trigger: ":coffee"
+    replace: "'c[_]''"
+
+  - trigger: ":cassette"
+    replace: "|[●▪▪●]|"
+
+  - trigger: ":robot"
+    replace: "'c[○┬●]כ'"
+
+  - trigger: ":loveeyes"
+    replace: "(♥_♥)"
+
+  - trigger: ":happybirthday"
+    replace: "ዞᏜ℘℘Ꮍ ℬℹℛʈዞᗬᏜᎽ"
+
+  - trigger: ":bs"
+    replace: "|3ᵕᶦᶦᶳᶣᶨᶵ"
+
+  - trigger: ":happysquare"
+    replace: "【ツ】"
+
+  - trigger: ":punch"
+    replace: "O=('-'Q)"
+
+  - trigger: ":what"
+    replace: "ლ(ಠ益ಠლ)╯"
+
+  - trigger: ":seewhatyoudid"
+    replace: "☚ (<‿<)☚"
+
+  - trigger: ":fancylol"
+    replace: "[]_ ([]) []_"
+
+  - trigger: ":omgwhat"
+    replace: "◕_◕"
+
+  - trigger: ":squid"
+    replace: "くコ:彡"
+
+  - trigger: ":yolo"
+    replace: "Yᵒᵘ Oᶰˡʸ Lᶤᵛᵉ Oᶰᶜᵉ"
+
+  - trigger: ":wfh"
+    replace: "🏠 ωοяκιηg ƒяοм нοмε"
+
+  - trigger: ":m1"
+    replace: ",.-~*´¨¯¨`*·~-.¸-($|$)-,.-~*´¨¯¨`*·~-.¸"
+
+  - trigger: ":m2"
+    replace: "(¯`·._.·(¯`·._.· $|$ ·._.·´¯)·._.·´¯)"
+
+  - trigger: ":m3"
+    replace: "(¯`·._.··¸.-~*´¨¯¨`*·~-.,-($|$)-,.-~*´¨¯¨`*·~-.¸··._.·´¯)"
+
+  - trigger: ":m4"
+    replace: "(¯`·._.·(¯`·._.·(¯`·._.· $|$ ·._.·´¯)·._.·´¯)·._.·´¯)"

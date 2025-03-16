@@ -1,0 +1,50 @@
+global_vars:
+  - name: "sn_name"
+    type: "echo"
+    params:
+      echo: "\nAlexander Klippel"
+
+matches:
+
+  # Konvertera länkar till HTML i servicenow
+  - trigger: ":snlink"
+    replace: '[code]<a href="" target="_blank" title="">Länk</a>[/code]'
+
+  # Konvertera kodblock
+  - trigger: ":sncode"
+    replace: "[code][/code]"
+
+  # Konvertera snlist till numrerad lista eller snnumlist till punktlista
+  - trigger: ":snlist"
+    replace: "[code]<ul><li>One</li><li>Two</li></ul>[/code]"
+
+  # Konvertera snimg till bild
+  - trigger: ":snimg"
+    replace: '[code]<img src="">[/code]'
+  
+  # Konvertera snstatus till img bild med url https://geek.nu/status.gif
+  - trigger: ":snstatus"
+    replace: '[code]<img src="https://geek.nu/status.gif">[/code]'
+
+  - trigger: ":snnumlist"
+    replace: "[code]<ol><li>One</li><li>Two</li></ol>[/code]"
+
+  ## Förifyll kodblock med exempelkod
+  - trigger: ":snblock"
+    replace: "[code]<pre><code>function foo() {<br/>console.log('bar');<br/>}</code></pre>[/code]"
+
+  # H1 rubrik worknotes
+  - trigger: ":snh1"
+    replace: "[code]<h1></h1>[/code]"
+
+  # H2 rubrik worknotes
+  - trigger: ":snh2"
+    replace: "[code]<h2></h2>[/code]"
+
+  # H3 rubrik worknotes
+  - trigger: ":snh3"
+    replace: "[code]<h3></h3>[/code]"
+
+  # Med vänliga hälsningar
+  - trigger: ":snmvh"
+    replace: "Ha en fortsatt trevlig dag!\n\nMed vänliga hälsningar{{sn_name}}"

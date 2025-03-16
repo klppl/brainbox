@@ -1,0 +1,142 @@
+# espanso match file
+
+global_vars:
+  - name: "signoff"
+    type: "echo"
+    params:
+      echo: "hälsningar\nAlexander Klippel"
+
+matches:
+  - trigger: ":date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%d-%m-%Y"
+          
+  - trigger: ":getip"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "curl ifconfig.me"
+
+  - trigger: ":winip"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "curl ifconfig.me"
+          shell: cmd
+
+  - triggers: [:srch-ddg, :search-duckduckgo]
+    replace: 'https://duckduckgo.com/?q='
+  - triggers: [:srch-wiki, :search-wikipedia]
+    replace: 'https://en.wikipedia.org/w/?search='
+  - triggers: [:srch-gh, :search-github]
+    replace: 'https://github.com/search?q='
+  - triggers: [:srch-red, :search-reddit]
+    replace: 'https://www.reddit.com/search/?q='
+  - triggers: [:srch-yt, :search-youtube]
+    replace: 'https://youtube.com/results?q='
+  - triggers: [:srch-maps, :search-maps]
+    replace: 'https://www.google.com/maps/search/'
+  - triggers: [:srch-goo, :search-google]
+    replace: 'https://google.com/search?q='
+
+  # Auto close brackets, quotes and formatting modifiers, and put cursor in center
+  - trigger: ':('
+    replace: '($|$)'
+  - trigger: ':['
+    replace: '[$|$]'
+  - trigger: ':{'
+    replace: '{$|$}'
+  - trigger: ':<'
+    replace: '<$|$>'
+  - trigger: ':`'
+    replace: '`$|$`'
+  - trigger: ":\'"
+    replace: "\'$|$\'"
+  - trigger: ':"'
+    replace: '"$|$"'
+  - trigger: ':_'
+    replace: '_$|$_'
+  - trigger: ':*'
+    replace: '*$|$*'
+  - trigger: ':-'
+    replace: '-$|$-'
+
+  # Personal email notes
+  - trigger: :fl
+    replace: "Fridens liljor,\nAlexander\n"
+
+  - trigger: :yt
+    replace: "https://www.youtube.com/feed/subscriptions"
+
+  - trigger: :cb
+    replace: "https://cube.advania.se/"
+
+  - triggers: [":tu", ":thumbsup"]
+    replace: "👍"
+
+  # Take me to PAM
+  - trigger: ":pam"
+    replace: "https://portal.pam-se.advania.cloud"
+
+  #Communications
+  - trigger: ":vh"
+    replace: "Vänliga {{signoff}}"
+  - trigger: ":rr"
+    replace: "{{signoff}}"
+  - trigger: ":bh"
+    replace: "Bästa {{signoff}}"
+  - trigger: ":mvh"
+    replace: "Med vänliga {{signoff}}"
+    
+  ###GIF CITY
+  - trigger: ":cheers"
+    image_path: "$CONFIG/images/Smiling_Leo_Perfect_GIF.gif"
+
+  - triggers: [":check", ":tick"]
+    replace: "✓"
+
+  - trigger: "$re"
+    replace: " site:reddit.com"
+
+  - trigger: "$so"
+    replace: " site:stackoverflow.com"
+
+  - trigger: "$gh"
+    replace: " site:github.com"
+
+  - trigger: "$gist"
+    replace: " site:gist.github.com"
+
+  - trigger: "$hn"
+    replace: " site:news.ycombinator.com"
+
+  - trigger: "//drive"
+    force_clipboard: true
+    replace: "https://drive.google.com/drive/u/0/my-drive"
+
+  - trigger: "//gm"
+    force_clipboard: true
+    replace: "https://mail.google.com/mail/u/0/"
+
+  - trigger: ":paste"
+    replace: "{{clipboard}}"
+    vars:
+      - name: "clipboard"
+        type: "clipboard"
+
+  - trigger: :wtc
+    replace: "{{output}}"
+    vars:
+    - name: output
+      type: shell
+      params:
+      #cmd: Invoke-WebRequest whatthecommit.com/index.txt -UseBasicParsing -Headers @{"accept"="text/plain"} | Select-Object -Expand Content
+        cmd: curl https://whatthecommit.com/index.txt

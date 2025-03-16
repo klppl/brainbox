@@ -1,0 +1,7 @@
+! Reddit app ad
+www.reddit.com##.XPromoPopupRpl
+www.reddit.com##xpromo-new-app-selector
+www.reddit.com##.bottom-bar, .XPromoBottomBar
+www.reddit.com##.useApp,.TopNav__promoButton
+www.reddit.com##body:style(pointer-events:auto!important;)
+www.reddit.com##body:style(overflow: auto !important; position: static !important;)

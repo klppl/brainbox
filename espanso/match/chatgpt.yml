@@ -1,0 +1,150 @@
+# Configuration file for prompts to use with ChatGPT, Bard, and other LLMs.
+
+matches:
+  - trigger: ":summarize"
+    replace: |
+      {{output}}
+
+      {{clipboard}}
+    vars:
+      - name: output
+        type: choice
+        params:
+          values:
+            - |-
+              TL;DR:
+
+              $|$
+            - ""
+      - name: "clipboard"
+        type: "clipboard"
+
+  - trigger: ":gptemoji"
+    replace: |
+      You are a professional emoji picker, responsible for giving me several emoji ideas for the following description:
+
+      $|$
+
+  - trigger: ":meetsummary"
+    replace: |
+      ChatGPT, from this point forward, do not respond to any of my prompts unless I precede them with 'respond now'. Please exclude all fluff, disclaimers, and warnings in your responses. Strictly adhere to this behavior until instructed otherwise. Additionally, I require you to summarize the following transcript, incorporating details about attendees, key topics, action items, and next steps.
+
+  - trigger: ":gptsocial"
+    replace: |
+      I want you to act as a social media manager. You will craft engaging, though-provoking, and highly shareable social media posts for various platforms, such as LinkedIn, Twitter, and Mastodon. Each post you create should provide a positive impression. Please create several post options, based on the following content:
+
+  - trigger: ":gptcoverletter"
+    replace: |
+      Imagine you're a professional cover letter writing assistant. I want you to generate cover letters based on your knowledge and the attached resume.
+
+      Rules you should follow:
+      1. Knowledge with "example" in the file name should only be used as inspiration for prose, grammar, tone, and cohesion.
+      2. Files with "Quinn.McHugh" in the file name contains content of previously written cover letters. You should emulate the voice of these cover letters and are encouraged to utilize the language and content contained in these files.
+
+  - trigger: ":gptjformat"
+    replace: "Please fix the formatting of the following text. Be sure to include all details and keep content as accurate as possible:"
+
+# market and stock analysis
+  - trigger: ":marketanalysis"
+    replace: |
+      Analyze the current trends in the crypto futures market, focusing on {{sector}}. Identify any emerging patterns and suggest potential investment opportunities. Consider recent market data and industry news in your analysis.
+    vars:
+      - name: sector
+        type: text
+
+  - trigger: ":portfoliodiversification"
+    replace: |
+      Given a portfolio with a mix of {{cryptos}}, suggest strategies to diversify further while minimizing risk. Include potential cryptos to explore and specific coins to consider.
+    vars:
+      - name: cryptos
+        type: text
+
+  - trigger: ":riskmanagement"
+    replace: |
+      Discuss effective risk management techniques for a crypto trader. Provide detailed examples of how to implement stop-loss orders, diversification, and position sizing in a trading strategy. Use {{trading_strategy}} as a reference.
+    vars:
+      - name: trading_strategy
+        type: text
+
+  - trigger: ":technicalanalysis"
+    replace: |
+      Using technical analysis, evaluate the crypto {{crypto}}. Analyze recent price movements, volume, and key indicators such as moving averages and RSI. Provide a buy, sell, or hold recommendation.
+    vars:
+      - name: crypto
+        type: text
+
+  - trigger: ":economicindicators"
+    replace: |
+      Explain how various economic indicators like GDP, unemployment rates, and inflation impact the crypto futures market performance. Provide examples of how investors can use these indicators to make informed trading decisions regarding {{sector}}.
+    vars:
+      - name: sector
+        type: text
+
+  - trigger: ":valueinvesting"
+    replace: |
+      Describe the principles of value investing in the context of crypto and how to identify undervalued cryptocurrencies. Use real-world examples, including {{crypto}}, to illustrate how investors can apply this strategy in the current market.
+    vars:
+      - name: crypto
+        type: text
+
+  - trigger: ":marketsentiment"
+    replace: |
+      Analyze how market sentiment influences crypto prices. Discuss tools and techniques investors can use to gauge sentiment and incorporate it into their trading strategies. Focus on {{crypto_or_sector}}.
+    vars:
+      - name: crypto_or_sector
+        type: text
+
+  - trigger: ":earningsreport"
+    replace: |
+      Explain how to interpret a crypto project's earnings or progress report. Highlight the key metrics investors should focus on and how these metrics can impact prices. Use {{project_report}} as an example.
+    vars:
+      - name: project_report
+        type: text
+
+  - trigger: ":growthdividendcryptos"
+    replace: |
+      Compare and contrast growth cryptocurrencies and dividend-paying cryptocurrencies. Discuss the benefits and risks of each type of investment and suggest scenarios where one might be more suitable than the other. Reference {{growth_crypto}} and {{dividend_crypto}}.
+    vars:
+      - name: growth_crypto
+        type: text
+      - name: dividend_crypto
+        type: text
+
+  - trigger: ":globalevents"
+    replace: |
+      Analyze the impact of major global events (e.g., geopolitical tensions, pandemics) on the crypto futures market. Provide strategies for investors to protect their portfolios during such events. Consider the impact on {{sector_or_crypto}}.
+    vars:
+      - name: sector_or_crypto
+        type: text
+
+# fitness and health
+  - trigger: ":workoutroutine"
+    replace: |
+      Help me design a workout routine for {{goal}} that fits my schedule of {{days_per_week}} days per week and includes my preferred exercises. Include warm-up, main exercises, and cooldown.
+    vars:
+      - name: goal
+        type: text
+      - name: days_per_week
+        type: text
+
+  - trigger: ":nutritionplan"
+    replace: |
+      Create a nutrition plan that aligns with my goal of {{fitness_goal}}. Include meal ideas, portion sizes, and snack options, considering my dietary preferences and any restrictions.
+    vars:
+      - name: fitness_goal
+        type: text
+
+  - trigger: ":homeworkoutsetup"
+    replace: |
+      Guide me on setting up a home workout space. Suggest essential equipment for {{workout_type}} and advise on how to use the space efficiently.
+    vars:
+      - name: workout_type
+        type: text
+
+  - trigger: ":trackprogress"
+    replace: |
+      Help me create a simple system to track my fitness progress. Include ways to monitor workouts, measure results, and adjust my routine over time.
+
+  - trigger: ":motivationboost"
+    replace: |
+      Provide tips to keep me motivated and consistent with my workouts, especially for days when I struggle to stay on track.
