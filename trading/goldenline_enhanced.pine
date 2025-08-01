@@ -1,0 +1,50 @@
+//@version=6
+indicator("Golden Line Enhanced", shorttitle="GLD+", overlay=true)
+
+// Function to calculate SMMA
+smma(src, length) =>
+    var float smma_val = na  // Explicitly define the type as float
+    smma_val := na(smma_val[1]) ? ta.sma(src, length) : (smma_val[1] * (length - 1) + src) / length
+    smma_val
+
+// Inputs for lengths and colors
+length1 = input.int(15, title="SMMA Length 1", minval=1)
+length2 = input.int(19, title="SMMA Length 2", minval=1)
+length3 = input.int(25, title="SMMA Length 3", minval=1)
+length4 = input.int(29, title="SMMA Length 4", minval=1)
+
+line1_color = input.color(color.orange, title="Line 1 Color")
+line2_color = input.color(color.blue, title="Line 2 Color")
+signal_color = input.color(color.red, title="Signal Fill Color")
+
+// Calculating SMMAs
+v1 = smma(hl2, length1)
+m1 = smma(hl2, length2)
+m2 = smma(hl2, length3)
+v2 = smma(hl2, length4)
+
+// Trading conditions
+p2 = (v1 < m1 != v1 < v2) or (m2 < v2 != v1 < v2)
+p3 = not p2 and v1 < v2
+p1 = not p2 and not p3
+
+// Colors based on conditions
+c = p1 ? line1_color : p2 ? line2_color : color.navy
+
+// Plot lines
+line1 = plot(v1, title="Line 1", color=line1_color, linewidth=2)
+line2 = plot(v2, title="Line 2", color=line2_color, linewidth=2)
+
+// Fill areas for visual signals with transparency handled via color.new
+fill(line1, line2, color=color.new(c, 85))  // Set transparency to 85
+
+// Add buy and sell signals
+buy_signal = ta.crossover(v1, v2)
+sell_signal = ta.crossunder(v1, v2)
+
+plotshape(buy_signal, title="Buy Signal", location=location.belowbar, color=color.green, style=shape.labelup, text="BUY")
+plotshape(sell_signal, title="Sell Signal", location=location.abovebar, color=color.red, style=shape.labeldown, text="SELL")
+
+// Alert conditions
+alertcondition(buy_signal, title="Buy Alert", message="Golden Line: Buy Signal Detected")
+alertcondition(sell_signal, title="Sell Alert", message="Golden Line: Sell Signal Detected")
