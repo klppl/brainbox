@@ -5,3 +5,8 @@ www.reddit.com##.bottom-bar, .XPromoBottomBar
 www.reddit.com##.useApp,.TopNav__promoButton
 www.reddit.com##body:style(pointer-events:auto!important;)
 www.reddit.com##body:style(overflow: auto !important; position: static !important;)
+
+! Flashback
+flashback.org###top-banner-container, #top-banner-wrapper
+flashback.org##+js(nostif, #top-banner-container)
+/ads.js$domain=flashback.org
