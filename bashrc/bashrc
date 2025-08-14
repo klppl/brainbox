@@ -36,3 +36,5 @@ alias blogga='lftp -u USERNAME,PASSWORD -e "mirror --reverse /PATH/TO/UPLOAD /" 
 alias zenupdate='bash <(curl https://updates.zen-browser.app/appimage.sh)'
 
 alias espansoconfig='xdg-open ~/.config/espanso'
+
+alias gitnuke='git reset --hard HEAD && git clean -fd'
