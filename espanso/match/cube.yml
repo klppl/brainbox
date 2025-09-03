@@ -22,9 +22,9 @@ matches:
   - trigger: ":snimg"
     replace: '[code]<img src="">[/code]'
   
-  # Konvertera snstatus till img bild med url https://geek.nu/status.gif
+  # Konvertera snstatus till img bild med url https://vvv.geek.nu/advania/status.gif
   - trigger: ":snstatus"
-    replace: '[code]<img src="https://geek.nu/status.gif">[/code]'
+    replace: '[code]<img src="https://vvv.geek.nu/advania/status.gif">[/code]'
 
   - trigger: ":snnumlist"
     replace: "[code]<ol><li>One</li><li>Two</li></ol>[/code]"
@@ -44,6 +44,9 @@ matches:
   # H3 rubrik worknotes
   - trigger: ":snh3"
     replace: "[code]<h3></h3>[/code]"
+
+  - trigger: ":snreminder"
+    replace: "Hej! Vi har försökt nå dig i detta ärende men inte fått något svar. Har du möjlighet att återkomma till oss när det passar dig?\n\nHa en fortsatt trevlig dag!\n\nMed vänliga hälsningar{{sn_name}}"
 
   # Med vänliga hälsningar
   - trigger: ":snmvh"
