@@ -38,3 +38,6 @@ alias zenupdate='bash <(curl https://updates.zen-browser.app/appimage.sh)'
 alias espansoconfig='xdg-open ~/.config/espanso'
 
 alias gitnuke='git reset --hard HEAD && git clean -fd'
+
+alias ytv='yt-dlp -f "bv+ba/b"'
+alias yta='yt-dlp -x --audio-format mp3'
