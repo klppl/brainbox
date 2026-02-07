@@ -38,3 +38,5 @@ alias zenupdate='bash <(curl https://updates.zen-browser.app/appimage.sh)'
 alias espansoconfig='xdg-open ~/.config/espanso'
 
 alias gitnuke='git reset --hard HEAD && git clean -fd'
+
+alias gst='git status'
