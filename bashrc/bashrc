@@ -1,42 +1,80 @@
+# ------------------------------------------------------------------------------
+# REMOTE CONNECTIONS
+# ------------------------------------------------------------------------------
 alias ssh_unraid="ssh root@192.168.50.5"
-alias chatten='ssh user@host -t "tmux attach-session -t weechat"'
+alias chatten="ssh user@host -t 'tmux attach-session -t weechat'"
 
-alias vädret="curl wttr.in/Orebro?lang=sv"
-alias ls="ls -F"
-
-alias dl="cd /PATH/TO/DOWNOADS"
-
-alias la='ls -lAh'
-
-alias whoami="whoami && curl ident.me"
-
-# Clean stupid '*~' files
-alias cleanfs='find ~/ -type f -name "*~" -delete'
-
-alias app="sudo apt-get"
-alias app-remove="sudo apt-get remove"
-alias app-install="sudo apt-get install"
-alias app-edit="sudo envedit /etc/apt/sources.list"
-alias app-search="apt-cache --names-only search"
-alias app-search-all="apt-cache search"
-alias app-update="sudo apt-get update && sudo apt-get upgrade"
-alias app-info="apt-cache showpkg"
-
-alias bashedit="sudo nano ~/.bashrc"
-alias bashrefresh="source ~/.bashrc"
-
+# ------------------------------------------------------------------------------
+# NAVIGATION & FILE LISTING
+# ------------------------------------------------------------------------------
+alias ls="ls -Fh --color=auto"
+alias la="ls -lAh"
+alias dl="cd ~/Downloads"  # Fixed typo and used standard path
 alias plusx="chmod +x"
 
-alias nuke="killall5"
+# Clean up temporary backup files (ending in ~)
+alias cleanfs='find ~/ -type f -name "*~" -delete'
 
-alias hugoserver="hugo server --noHTTPCache"
+# ------------------------------------------------------------------------------
+# SYSTEM INFO & UTILS
+# ------------------------------------------------------------------------------
+alias vädret="curl wttr.in/Orebro?lang=sv"
+alias myip="curl ident.me && echo" # Separated from whoami to avoid recursion
+alias nuke="killall5"              # Use with caution!
 
-alias blogga='lftp -u USERNAME,PASSWORD -e "mirror --reverse /PATH/TO/UPLOAD /" FTPSERVER'
+# ------------------------------------------------------------------------------
+# PACKAGE MANAGEMENT (APT)
+# ------------------------------------------------------------------------------
+# Using 'apt' instead of 'apt-get' for better interactive output
+alias app="sudo apt"
+alias app-install="sudo apt install"
+alias app-remove="sudo apt remove"
+alias app-search="apt-cache --names-only search"
+alias app-search-all="apt-cache search"
+alias app-info="apt-cache show"
+alias app-edit="sudo edit /etc/apt/sources.list"
+alias app-update="sudo apt update && sudo apt upgrade -y"
 
-alias zenupdate='bash <(curl https://updates.zen-browser.app/appimage.sh)'
+# ------------------------------------------------------------------------------
+# GIT SHORTCUTS
+# ------------------------------------------------------------------------------
+alias gst="git status"
+alias gitnuke="git reset --hard HEAD && git clean -fd"
+alias ga='git add .'
+alias gc='git commit -m'
+alias gp='git push'
+alias gl='git pull'
+alias gd='git diff'
+alias gco='git checkout'
+alias gcb='git checkout -b' # Create and switch to new branch
 
-alias espansoconfig='xdg-open ~/.config/espanso'
+# ------------------------------------------------------------------------------
+# SHELL CONFIGURATION
+# ------------------------------------------------------------------------------
+# Removed 'sudo' because you own your home directory files
+alias bashedit="nano ~/.bashrc"
+alias bashrefresh="source ~/.bashrc"
 
-alias gitnuke='git reset --hard HEAD && git clean -fd'
-
-alias gst='git status'
+# ------------------------------------------------------------------------------
+# FUNCTIONS
+# ------------------------------------------------------------------------------
+extract () {
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1     ;;
+      *.tar.gz)    tar xzf $1     ;;
+      *.bz2)       bunzip2 $1     ;;
+      *.rar)       unrar e $1     ;;
+      *.gz)        gunzip $1      ;;
+      *.tar)       tar xf $1      ;;
+      *.tbz2)      tar xjf $1     ;;
+      *.tgz)       tar xzf $1     ;;
+      *.zip)       unzip $1       ;;
+      *.Z)         uncompress $1  ;;
+      *.7z)        7z x $1        ;;
+      *)           echo "'$1' cannot be extracted via extract()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
