@@ -44,15 +44,35 @@ alias app-update="sudo apt update && sudo apt upgrade -y"
 # ------------------------------------------------------------------------------
 # GIT SHORTCUTS
 # ------------------------------------------------------------------------------
+
+# Basic Operations
 alias gst="git status"
-alias gitnuke="git reset --hard HEAD && git clean -fd"
 alias ga='git add .'
 alias gc='git commit -m'
+alias gcan='git commit --amend --no-edit' # Add changes to last commit without changing message
 alias gp='git push'
 alias gl='git pull'
 alias gd='git diff'
+alias gb='git branch'
+
+# Branching & Checkout
 alias gco='git checkout'
-alias gcb='git checkout -b' # Create and switch to new branch
+alias gcb='git checkout -b'
+alias gpsup='git push --set-upstream origin $(git branch --show-current)'
+
+# Visualization & Logs
+alias glo="git log --oneline --graph --decorate" # A beautiful, readable tree log
+alias glog="git log --all --graph --decorate --oneline" # Log for all branches
+
+# Git Worktree (Multi-tasking)
+alias gwt="git worktree"
+alias gwtl="git worktree list"
+alias gwta="git worktree add"
+alias gwtrm="git worktree remove"
+
+# The Nuclear Option
+alias gitnuke="git reset --hard HEAD && git clean -fd"
+alias guncommit="git reset --soft HEAD~1" # Undo last commit but keep changes staged
 
 # ------------------------------------------------------------------------------
 # SHELL CONFIGURATION
