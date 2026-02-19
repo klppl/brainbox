@@ -104,3 +104,56 @@ extract () {
     echo "'$1' is not a valid file"
   fi
 }
+
+httpserver() {
+    local port="${1:-8000}"
+    echo "Starting server on port $port..."
+    if command -v python3 &>/dev/null; then
+        python3 -m http.server "$port"
+    elif command -v python &>/dev/null; then
+        python -m SimpleHTTPServer "$port"
+    else
+        echo "Error: Python is not installed."
+        return 1
+    fi
+}
+
+function git_dashboard() {
+    if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+        echo -e "\n\033[1;34m--- GIT DASHBOARD ---\033[0m"
+
+        echo -en "\033[0;32mOn Branch: \033[0m"
+        git branch --show-current
+
+        if git rev-parse HEAD > /dev/null 2>&1; then
+            echo -en "\033[0;36mLast Commit: \033[0m"
+            git log -1 --format="%C(yellow)%h %C(reset)%s %C(dim)(%cr)%C(reset)"
+        fi
+
+        local wt_count=$(git worktree list | wc -l)
+        if [ "$wt_count" -gt 1 ]; then
+            echo -e "\n\033[0;33mActive Worktrees:\033[0m"
+            git worktree list | awk '{print "  -> " $0}'
+        fi
+
+        local status_output=$(git status -s)
+        if [ -z "$status_output" ]; then
+            echo -e "\n\033[0;32mStatus: Working tree clean\033[0m"
+        else
+            echo -e "\n\033[0;33mStatus Summary:\033[0m"
+            echo "$status_output"
+        fi
+
+        echo -e "\033[1;34m----------------------\033[0m"
+    fi
+}
+
+cd() {
+    builtin cd "$@" && git_dashboard
+}
+
+git_dashboard
+
+
+
+
